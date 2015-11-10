@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @weedpen.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @weedpen.longitude %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @weedpen.address %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @weedpen.description %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @weedpen.title %>
+</p>
+
+<%= link_to 'Edit', edit_weedpen_path(@weedpen) %> |
+<%= link_to 'Back', weedpens_path %>
+
+
+<h3>Nearby Weed Pens</h3>
+<ul>
+<% for weedpen in @weedpen.nearbys(30) %>
+  <li><%= link_to weedpen.address, weedpen %> (<%= weedpen.distance.round(2) %> miles)</li>
+<% end %>
+</ul>

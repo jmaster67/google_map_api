@@ -1,0 +1,78 @@
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtKF6XQLqE5lc0w0Qt_jlUzull0JFG1go"
+  type="text/javascript"></script>
+
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Weedpens</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Address</th>
+      <th>Description</th>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+<%= form_tag weedpens_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search Near", :name => nil %>
+  </p>
+<% end %>
+
+
+  <tbody>
+    <% @weedpens.each do |weedpen| %>
+      <tr>
+        <td><%= weedpen.latitude %></td>
+        <td><%= weedpen.longitude %></td>
+        <td><%= weedpen.address %></td>
+        <td><%= weedpen.description %></td>
+        <td><%= weedpen.title %></td>
+        <td><%= link_to 'Show', weedpen %></td>
+        <td><%= link_to 'Edit', edit_weedpen_path(weedpen) %></td>
+        <td><%= link_to 'Destroy', weedpen, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Weedpen', new_weedpen_path %>
+
+
+<h1>Weed Pen Map</h1>
+<div id="map-container">
+  <div id="map">
+
+<script type="text/javascript">
+
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 41.1810055, lng: -74.3380419},
+    zoom: 8
+  });
+}
+
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtKF6XQLqE5lc0w0Qt_jlUzull0JFG1go&callback=initMap">
+    </script>
+
+  </div>
+
+
+</div>
+
+
+
+
+
