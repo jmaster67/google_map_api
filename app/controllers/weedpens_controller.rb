@@ -4,17 +4,27 @@ class WeedpensController < ApplicationController
   # GET /weedpens
   # GET /weedpens.json
   def index
-
-  if params[:search].present?
-    @weedpens = Weedpen.near(params[:search], 50, :order => :distance)
+    if params[:search].present?
+      @weedpens = Weedpen.near(params[:search], 50, :order => :distance)
     else
-    @weedpens = Weedpen.all
+      @weedpens = Weedpen.all
     end
   end
+  
+
+  
 
   # GET /weedpens/1
   # GET /weedpens/1.json
   def show
+    @weedpen = Weedpen.find(params[:id])
+
+    @hash = Gmaps4rails.build_markers(@weedpens) do |weedpen, marker|
+      marker.lat weedpen.latitude
+      marker.lng weedpen.longitude
+      marker.infowindow "<a target='blank' href='https://www.google.com/maps/place/"+"#{farm.address}"+"'>Get Directions With Google Maps</a>"
+      marker.json({ title: weedpen.name })
+    end
   end
 
   # GET /weedpens/new

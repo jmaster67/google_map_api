@@ -1,8 +1,4 @@
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtKF6XQLqE5lc0w0Qt_jlUzull0JFG1go"
-  type="text/javascript"></script>
-
-
+<%= javascript_include_tag "gmap" %>
 
 <p id="notice"><%= notice %></p>
 
@@ -54,13 +50,37 @@
 
 <script type="text/javascript">
 
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 41.1810055, lng: -74.3380419},
-    zoom: 8
-  });
-}
+// var map;
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById('map'), {
+//     center: {lat: 37.09024, lng: -100.712891},
+//     zoom: 5
+//   });
+// }
+
+// //   // var marker = new google.maps.Marker({
+// //   //   position: {lat: 41.1810055, lng: -74.3380419},
+// //   //   map: map,
+// //   //   title: 'Weed Pens!'
+// //   // });
+
+// //  // var image = '/images/weed.jpg';
+// //  //  var weedMarker = new google.maps.Marker({
+// //  //    position: {lat: 41.1810055, lng: -74.3380419},
+// //  //    map: map,
+// //  //    icon: image
+// //  //  });
+
+// var marker;
+// function createMarker(coords, map, title){
+//   marker = new google.maps.Marker({
+//     position: coords,
+//     map: map,
+//     title: title
+//   });
+// }
+
+
 
     </script>
     <script async defer
